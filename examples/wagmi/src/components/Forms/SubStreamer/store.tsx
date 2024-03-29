@@ -26,7 +26,7 @@ const prefill: Omit<ISubStreamerCreateWithDuration, "api"> = {
   receivers: ["0xAb3B85eA4f70085216FD093271fF73D77F98DAE4", "0x1D19cdCF692F4BB262579A5cd7609B4B1621CEf2"],
   receiversNumber: 2,
   streamId: "950",
-  weightsPercent: ["50", "50"],
+  weightsPercent: ["40", "60"],
 };
 
 const useStoreForm = createWithEqualityFn<ISubstreamerCreateWithDuration>(

@@ -20,7 +20,7 @@ const prefill: Omit<IStoreFormLinear, "api"> = {
   error: undefined,
   logs: [],
 
-  amount: "100",
+  amount: "10000",
   cancelability: true,
   cliff: undefined,
   duration: "86400", // 1 day
