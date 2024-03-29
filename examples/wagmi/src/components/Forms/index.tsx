@@ -3,6 +3,8 @@ import { useState } from "react";
 import LockupLinear from "./LockupLinear";
 import LockupDynamic from "./LockupDynamic";
 import Headless from "./Headless";
+import SubStreamer from "./SubStreamer";
+import SubStreamerWithdraw from "./SubStreamerWithdraw";
 import { useAccount } from "wagmi";
 
 const Wrapper = styled.div`
@@ -86,10 +88,18 @@ function Forms() {
         <Tab data-active={tab === 2} onClick={() => setTab(2)}>
           <p>Headless</p>
         </Tab>
+        <Tab data-active={tab === 3} onClick={() => setTab(3)}>
+          <p>SubStreamer</p>
+        </Tab>
+        <Tab data-active={tab === 4} onClick={() => setTab(4)}>
+          <p>SubStreamer Withdraw</p>
+        </Tab>
       </Tabs>
       {tab === 0 && <LockupLinear />}
       {tab === 1 && <LockupDynamic />}
       {tab === 2 && <Headless />}
+      {tab === 3 && <SubStreamer />}
+      {tab === 4 && <SubStreamerWithdraw />}
     </Wrapper>
   );
 }

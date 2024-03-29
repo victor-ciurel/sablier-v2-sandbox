@@ -53,6 +53,40 @@ export interface IStoreFormDynamic {
   };
 }
 
+export interface ISubStreamerCreateWithDuration {
+  logs: string[];
+  error: string | undefined;
+
+  cliff: string,
+  duration: string,
+  lockupLinear: IAddress;
+  receivers: IAddress[];
+  streamId: string;
+  weightsPercent: string[];
+
+  api: {
+    log: (value: string) => void;
+    update: (updates: Partial<IStoreFormLinear>) => void;
+    reset: () => void;
+  };
+}
+
+export interface ISubStreamerWithdraw {
+  logs: string[];
+  error: string | undefined;
+
+  amount: IAmount;
+  lockupLinear: IAddress;
+  subStreamId: string;
+  to: IAddress;
+
+  api: {
+    log: (value: string) => void;
+    update: (updates: Partial<IStoreFormLinear>) => void;
+    reset: () => void;
+  };
+}
+
 export type ICreateWithDurations = [
   sender: IAddress,
   recipient: IAddress,
@@ -171,4 +205,20 @@ export type IBatchCreateWithMilestones = [
     segments: ISegmentM<number>[];
     broker: { account: IAddress; fee: 0n };
   }[], // Array of batches
+];
+
+export type ISubStreamerCreateWithDurationType = [
+  streamId: number,
+  lockupLinear: IAddress,
+  receivers: IAddress[],
+  weightsPercent: string[],
+  cliff: number,
+  duration: number,
+];
+
+export type ISubStreamerWithdrawType = [
+  lockupLinear: IAddress,
+  subStreamId: string,
+  to: IAddress,
+  amount: IAmount,
 ];
