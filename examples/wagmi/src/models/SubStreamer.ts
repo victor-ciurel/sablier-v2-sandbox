@@ -42,11 +42,18 @@ export default class PeripherySubStreamer {
   }
 
   static async doWithdraw(state: ISubStreamerWithdraw) {
+    const decimals = await readContract({
+      address: state.token as IAddress,
+      abi: ABI.ERC20.abi,
+      functionName: "decimals",
+    });
+    const padding = new BigNumber(10).pow(new BigNumber(decimals.toString()));
+    const amount = BigInt(new BigNumber(state.amount).times(padding).toFixed());
     const data: ISubStreamerWithdrawType = [
       state.lockupLinear,
       state.streamId,
       state.to,
-      state.amount,
+      amount,
     ];
     console.info("Payload", data);
 
