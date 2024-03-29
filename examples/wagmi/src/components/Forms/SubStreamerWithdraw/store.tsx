@@ -26,6 +26,7 @@ const prefill: Omit<ISubStreamerWithdraw> = {
 const useStoreForm = createWithEqualityFn<ISubstreamerCreateWithDuration>(
   (set) => ({
     ...initial,
+    loading: false,
     api: {
       log: (value: string) =>
         set((prev) => {

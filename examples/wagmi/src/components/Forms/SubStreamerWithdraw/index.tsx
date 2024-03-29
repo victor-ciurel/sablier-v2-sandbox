@@ -6,6 +6,7 @@ import {
   StreamId,
 } from "./fields";
 import { useCallback } from "react";
+import LoadingOverlay from "react-loading-overlay";
 import { PeripherySubStreamer } from "../../../models";
 import useStoreForm, { prefill } from "./store";
 import _ from "lodash";
@@ -73,7 +74,8 @@ const Actions = styled.div`
 
 function SubStreamerWithdraw() {
   const { isConnected } = useAccount();
-  const { error, logs, update } = useStoreForm((state) => ({
+  const { loading, error, logs, update } = useStoreForm((state) => ({
+    loading: state.loading,
     error: state.error,
     logs: state.logs,
     update: state.api.update,
@@ -96,6 +98,11 @@ function SubStreamerWithdraw() {
   }, [update]);
 
   return (
+<LoadingOverlay
+        active={loading}
+        spinner
+        text='Loading...'
+      >
     <Wrapper>
       <LockupLinearContract />
       <StreamId />
@@ -122,6 +129,7 @@ function SubStreamerWithdraw() {
         </>
       )}
     </Wrapper>
+</LoadingOverlay>
   );
 }
 

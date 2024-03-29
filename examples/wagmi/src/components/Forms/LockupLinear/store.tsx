@@ -32,6 +32,7 @@ const prefill: Omit<IStoreFormLinear, "api"> = {
 const useStoreForm = createWithEqualityFn<IStoreFormLinear>(
   (set) => ({
     ...initial,
+    loading: false,
     api: {
       log: (value: string) =>
         set((prev) => {

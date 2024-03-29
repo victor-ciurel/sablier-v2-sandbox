@@ -9,6 +9,7 @@ import {
   Transferability,
 } from "./fields";
 import { useCallback } from "react";
+import LoadingOverlay from "react-loading-overlay";
 import { Core, ERC20 } from "../../../models";
 import useStoreForm, { prefill } from "./store";
 import _ from "lodash";
@@ -76,10 +77,12 @@ const Actions = styled.div`
 
 function LockupLinear() {
   const { isConnected } = useAccount();
-  const { error, logs, update } = useStoreForm((state) => ({
+  const { loading, error, logs, update, transactionId} = useStoreForm((state) => ({
+    loading: state.loading,
     error: state.error,
     logs: state.logs,
     update: state.api.update,
+    transactionId: state.transactionId,
   }));
   const onApprove = useCallback(async () => {
     if (isConnected) {
@@ -110,6 +113,11 @@ function LockupLinear() {
   }, [update]);
 
   return (
+<LoadingOverlay
+        active={loading}
+        spinner
+        text='Loading...'
+      >
     <Wrapper>
       <Cancelability />
       <Transferability />
@@ -125,6 +133,7 @@ function LockupLinear() {
         <Button onClick={onApprove}>Approve token spending</Button>
         <Button onClick={onCreate}>Create LL stream</Button>
       </Actions>
+      {transactionId && <>{transactionId}</>}
       {error && <Error>{error}</Error>}
       {logs.length > 0 && (
         <>
@@ -140,6 +149,7 @@ function LockupLinear() {
         </>
       )}
     </Wrapper>
+</LoadingOverlay>
   );
 }
 

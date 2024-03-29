@@ -8,6 +8,7 @@ import {
   SubStreamReceiversNumber,
 } from "./fields";
 import { useCallback } from "react";
+import LoadingOverlay from "react-loading-overlay";
 import { PeripherySubStreamer } from "../../../models";
 import useStoreForm, { prefill } from "./store";
 import _ from "lodash";
@@ -75,7 +76,8 @@ const Actions = styled.div`
 
 function SubStreamer() {
   const { isConnected } = useAccount();
-  const { error, logs, update } = useStoreForm((state) => ({
+  const { loading, error, logs, update } = useStoreForm((state) => ({
+    loading: state.loading,
     error: state.error,
     logs: state.logs,
     update: state.api.update,
@@ -86,10 +88,12 @@ function SubStreamer() {
       const state = useStoreForm.getState();
       try {
         state.api.update({ error: undefined });
+        state.api.update({ loading: true });
         await PeripherySubStreamer.doSubStreamerCreateWithDuration(state, state.api.log);
       } catch (error) {
         state.api.update({ error: _.toString(error) });
       }
+      state.api.update({ loading: false });
     }
   }, [isConnected]);
 
@@ -98,6 +102,11 @@ function SubStreamer() {
   }, [update]);
 
   return (
+<LoadingOverlay
+        active={loading}
+        spinner
+        text='Loading...'
+      >
     <Wrapper>
       <LockupLinearContract />
       <StreamId />
@@ -126,6 +135,7 @@ function SubStreamer() {
         </>
       )}
     </Wrapper>
+</LoadingOverlay>
   );
 }
 
