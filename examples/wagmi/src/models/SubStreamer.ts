@@ -1,6 +1,6 @@
 import BigNumber from "bignumber.js";
 import _ from "lodash";
-import { getAccount, waitForTransaction, writeContract } from "wagmi/actions";
+import { getAccount, readContract, waitForTransaction, writeContract } from "wagmi/actions";
 import { ABI, SEPOLIA_CHAIN_ID, contracts } from "../constants";
 import type {
   IAddress,
