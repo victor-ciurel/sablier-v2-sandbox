@@ -6,7 +6,7 @@ import {
   StreamId,
 } from "./fields";
 import { useCallback } from "react";
-import { SubStreamer } from "../../../models";
+import { PeripherySubStreamer } from "../../../models";
 import useStoreForm, { prefill } from "./store";
 import _ from "lodash";
 import { useAccount } from "wagmi";
@@ -84,7 +84,7 @@ function SubStreamerWithdraw() {
       const state = useStoreForm.getState();
       try {
         state.api.update({ error: undefined });
-        await SubStreamer.doWithdraw(state, state.api.log);
+        await PeripherySubStreamer.doWithdraw(state, state.api.log);
       } catch (error) {
         state.api.update({ error: _.toString(error) });
       }

@@ -11,7 +11,6 @@ import { expect } from "../utils";
 
 export default class PeripherySubStreamer {
   static async doSubStreamerCreateWithDuration(state: ISubStreamerCreateWithDuration) {
-console.info("state", state);
     const receivers = state.receivers.map(
       function(receiver) {
         return receiver as IAddress;
@@ -22,7 +21,7 @@ console.info("state", state);
         return BigInt(percent);
       }
     );
-    const data: ISubStreamerCreateWithDurationType = [
+    const data = [
       BigInt(state.streamId),
       state.lockupLinear as IAddress,
       receivers,
@@ -42,11 +41,11 @@ console.info("state", state);
     return waitForTransaction({ hash: tx.hash });
   }
 
-  static async doWithdraw(payload: ISubStreamerWithdraw) {
+  static async doWithdraw(state: ISubStreamerWithdraw) {
     const data: ISubStreamerWithdrawType = [
       state.lockupLinear,
       state.streamId,
-      state.receiver,
+      state.to,
       state.amount,
     ];
     console.info("Payload", data);

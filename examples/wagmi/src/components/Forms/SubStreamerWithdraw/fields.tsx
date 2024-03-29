@@ -81,7 +81,7 @@ export function Receiver() {
 
 export function LockupLinearContract() {
   const { lockupLinear, update } = useFormStore((state) => ({
-    lockupLinearContract: state.lockupLinear,
+    lockupLinear: state.lockupLinear,
     update: state.api.update,
   }));
 
@@ -99,7 +99,7 @@ export function LockupLinearContract() {
         return;
       }
 
-      update({ lockupLinearContract: value });
+      update({ lockupLinear: value });
     },
     [update]
   );
