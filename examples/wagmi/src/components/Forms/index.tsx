@@ -41,7 +41,7 @@ const Tab = styled.div`
     display: none;
     position: absolute;
     bottom: -1px;
-    width: 160px;
+    width: 100%;
     height: 2px;
     border-radius: 1px;
     background-color: ${(props) => props.theme.colors.orange};
