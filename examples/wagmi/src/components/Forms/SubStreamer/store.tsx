@@ -25,7 +25,7 @@ const prefill: Omit<ISubStreamerCreateWithDuration, "api"> = {
   lockupLinear: "0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301",
   receivers: ["0xAb3B85eA4f70085216FD093271fF73D77F98DAE4", "0x1D19cdCF692F4BB262579A5cd7609B4B1621CEf2"],
   receiversNumber: 2,
-  streamId: "924",
+  streamId: "950",
   weightsPercent: ["50", "50"],
 };
 
