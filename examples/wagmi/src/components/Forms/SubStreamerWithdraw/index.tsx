@@ -87,10 +87,12 @@ function SubStreamerWithdraw() {
       const state = useStoreForm.getState();
       try {
         state.api.update({ error: undefined });
+        state.api.update({ loading: true });
         await PeripherySubStreamer.doWithdraw(state, state.api.log);
       } catch (error) {
         state.api.update({ error: _.toString(error) });
       }
+      state.api.update({ loading: false });
     }
   }, [isConnected]);
 

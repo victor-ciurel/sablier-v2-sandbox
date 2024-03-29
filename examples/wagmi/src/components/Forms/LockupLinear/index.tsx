@@ -89,10 +89,12 @@ function LockupLinear() {
       const state = useStoreForm.getState();
       try {
         state.api.update({ error: undefined });
+        state.api.update({ loading: true });
         await ERC20.doApprove("SablierV2LockupLinear", state, state.api.log);
       } catch (error) {
         state.api.update({ error: _.toString(error) });
       }
+      state.api.update({ loading: false });
     }
   }, [isConnected]);
 
@@ -101,10 +103,12 @@ function LockupLinear() {
       const state = useStoreForm.getState();
       try {
         state.api.update({ error: undefined });
+        state.api.update({ loading: true });
         await Core.doCreateLinear(state, state.api.log);
       } catch (error) {
         state.api.update({ error: _.toString(error) });
       }
+      state.api.update({ loading: false });
     }
   }, [isConnected]);
 
