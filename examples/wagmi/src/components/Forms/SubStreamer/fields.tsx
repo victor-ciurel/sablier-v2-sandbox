@@ -195,7 +195,7 @@ export function SubStreamReceiversNumber() {
           receivers: updatedReceivers,
           weightsPercent: updatedPercentages,
         });
-      }	else if (+value > state.receivers.length) {
+      } else if (+value > state.receivers.length) {
         const updatedReceivers = _.clone(state.receivers);
         const updatedPercentages = _.clone(state.weightsPercent);
         for (let i = state.receivers.length; i < +value; i++) {
@@ -206,7 +206,7 @@ export function SubStreamReceiversNumber() {
           receivers: updatedReceivers,
           weightsPercent: updatedPercentages,
         });
-      }	
+      }
     },
     [update]
   );
@@ -239,7 +239,6 @@ export function SubStreamReceivers() {
     receiversNumber: state.receiversNumber,
     update: state.api.update,
   }));
-  let receiverDivs = []
   const onChange = useCallback(
     (e: ChangeEvent<HTMLInputElement>, index: number, target: ChangeTarget) => {
       const value = (() => {
@@ -273,6 +272,8 @@ export function SubStreamReceivers() {
     },
     [update]
   );
+
+  let receiverDivs = []
   for (let i = 0; i < receiversNumber; i++) {
     receiverDivs.push((<Divider />));
     receiverDivs.push((

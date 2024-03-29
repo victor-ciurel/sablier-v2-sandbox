@@ -47,8 +47,10 @@ export default class PeripherySubStreamer {
       abi: ABI.ERC20.abi,
       functionName: "decimals",
     });
+
     const padding = new BigNumber(10).pow(new BigNumber(decimals.toString()));
     const amount = BigInt(new BigNumber(state.amount).times(padding).toFixed());
+
     const data: ISubStreamerWithdrawType = [
       state.lockupLinear,
       state.streamId,
