@@ -87,7 +87,6 @@ export default class Core {
 
       if (tx.hash) {
         log(`LL Stream sent to the blockchain with hash: ${tx.hash}.`);
-        log(`LL You can view the stream at: https://sepolia.etherscan.io/tx/${tx.hash}.`);
       }
 
       const receipt = await waitForTransaction({ hash: tx.hash });

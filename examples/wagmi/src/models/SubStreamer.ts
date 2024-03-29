@@ -10,7 +10,10 @@ import type {
 import { expect } from "../utils";
 
 export default class PeripherySubStreamer {
-  static async doSubStreamerCreateWithDuration(state: ISubStreamerCreateWithDuration) {
+  static async doSubStreamerCreateWithDuration(
+    state: ISubStreamerCreateWithDuration,
+    log: (value: string) => void
+  ) {
     const receivers = state.receivers.map(
       function(receiver) {
         return receiver as IAddress;
@@ -38,6 +41,9 @@ export default class PeripherySubStreamer {
       functionName: "createLinearSubStreamsWithDuration",
       args: data,
     });
+    if (tx.hash) {
+      log(`SubStreams sent to the blockchain with hash: ${tx.hash}.`);
+    }
     return waitForTransaction({ hash: tx.hash });
   }
 
@@ -47,7 +53,6 @@ export default class PeripherySubStreamer {
       abi: ABI.ERC20.abi,
       functionName: "decimals",
     });
-
     const padding = new BigNumber(10).pow(new BigNumber(decimals.toString()));
     const amount = BigInt(new BigNumber(state.amount).times(padding).toFixed());
 
