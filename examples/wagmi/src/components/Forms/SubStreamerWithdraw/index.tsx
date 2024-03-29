@@ -98,38 +98,38 @@ function SubStreamerWithdraw() {
   }, [update]);
 
   return (
-<LoadingOverlay
-        active={loading}
-        spinner
-        text='Loading...'
-      >
-    <Wrapper>
-      <LockupLinearContract />
-      <StreamId />
-      <Receiver />
-      <Amount />
-      <Divider />
-      <Actions>
-        <Button onClick={onPrefill}>Prefill form</Button>
-        <div />
-        <Button onClick={onWithdraw}>Withdraw</Button>
-      </Actions>
-      {error && <Error>{error}</Error>}
-      {logs.length > 0 && (
-        <>
-          <Divider />
-          <Logs>
-            <label>Logs</label>
-            <ul>
-              {logs.map((log) => (
-                <li key={log}>{log}</li>
-              ))}
-            </ul>
-          </Logs>
-        </>
-      )}
-    </Wrapper>
-</LoadingOverlay>
+    <LoadingOverlay
+      active={loading}
+      spinner
+      text='Loading...'
+    >
+      <Wrapper>
+        <LockupLinearContract />
+        <StreamId />
+        <Receiver />
+        <Amount />
+        <Divider />
+        <Actions>
+          <Button onClick={onPrefill}>Prefill form</Button>
+          <div />
+          <Button onClick={onWithdraw}>Withdraw</Button>
+        </Actions>
+        {error && <Error>{error}</Error>}
+        {logs.length > 0 && (
+          <>
+            <Divider />
+            <Logs>
+              <label>Logs</label>
+              <ul>
+                {logs.map((log) => (
+                  <li key={log}>{log}</li>
+                ))}
+              </ul>
+            </Logs>
+          </>
+        )}
+      </Wrapper>
+    </LoadingOverlay>
   );
 }
 

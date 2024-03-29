@@ -102,40 +102,40 @@ function SubStreamer() {
   }, [update]);
 
   return (
-<LoadingOverlay
-        active={loading}
-        spinner
-        text='Loading...'
-      >
-    <Wrapper>
-      <LockupLinearContract />
-      <StreamId />
-      <Cliff />
-      <Duration />
-      <SubStreamReceiversNumber />
-      <SubStreamReceivers />
-      <Divider />
-      <Actions>
-        <Button onClick={onPrefill}>Prefill form</Button>
-        <div />
-        <Button onClick={onCreate}>Create sub streams</Button>
-      </Actions>
-      {error && <Error>{error}</Error>}
-      {logs.length > 0 && (
-        <>
-          <Divider />
-          <Logs>
-            <label>Logs</label>
-            <ul>
-              {logs.map((log) => (
-                <li key={log}>{log}</li>
-              ))}
-            </ul>
-          </Logs>
-        </>
-      )}
-    </Wrapper>
-</LoadingOverlay>
+    <LoadingOverlay
+      active={loading}
+      spinner
+      text='Loading...'
+    >
+      <Wrapper>
+        <LockupLinearContract />
+        <StreamId />
+        <Cliff />
+        <Duration />
+        <SubStreamReceiversNumber />
+        <SubStreamReceivers />
+        <Divider />
+        <Actions>
+          <Button onClick={onPrefill}>Prefill form</Button>
+          <div />
+          <Button onClick={onCreate}>Create sub streams</Button>
+        </Actions>
+        {error && <Error>{error}</Error>}
+        {logs.length > 0 && (
+          <>
+            <Divider />
+            <Logs>
+              <label>Logs</label>
+              <ul>
+                {logs.map((log) => (
+                  <li key={log}>{log}</li>
+                ))}
+              </ul>
+            </Logs>
+          </>
+        )}
+      </Wrapper>
+    </LoadingOverlay>
   );
 }
 
