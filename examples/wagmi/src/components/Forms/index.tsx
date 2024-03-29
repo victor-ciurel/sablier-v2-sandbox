@@ -83,23 +83,15 @@ function Forms() {
           <p>Lockup Linear</p>
         </Tab>
         <Tab data-active={tab === 1} onClick={() => setTab(1)}>
-          <p>Lockup Dynamic</p>
-        </Tab>
-        <Tab data-active={tab === 2} onClick={() => setTab(2)}>
-          <p>Headless</p>
-        </Tab>
-        <Tab data-active={tab === 3} onClick={() => setTab(3)}>
           <p>SubStreamer</p>
         </Tab>
-        <Tab data-active={tab === 4} onClick={() => setTab(4)}>
+        <Tab data-active={tab === 2} onClick={() => setTab(2)}>
           <p>SubStreamer Withdraw</p>
         </Tab>
       </Tabs>
       {tab === 0 && <LockupLinear />}
-      {tab === 1 && <LockupDynamic />}
-      {tab === 2 && <Headless />}
-      {tab === 3 && <SubStreamer />}
-      {tab === 4 && <SubStreamerWithdraw />}
+      {tab === 1 && <SubStreamer />}
+      {tab === 2 && <SubStreamerWithdraw />}
     </Wrapper>
   );
 }
