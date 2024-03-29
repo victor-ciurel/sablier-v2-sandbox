@@ -152,3 +152,37 @@ export function StreamId() {
     />
   );
 }
+
+export function Token() {
+  const { token, update } = useFormStore((state) => ({
+    token: state.token,
+    update: state.api.update,
+  }));
+
+  const onChange = useCallback(
+    (e: ChangeEvent<HTMLInputElement>) => {
+      const value = (() => {
+        const input = e.target.value;
+        if (_.isNil(input) || _.toString(input).length === 0) {
+          return "";
+        }
+        return _.toString(input);
+      })();
+
+      update({ token: value });
+    },
+    [update]
+  );
+
+  return (
+    <Input
+      label={"Token"}
+      id={"token"}
+      value={token}
+      onChange={onChange}
+      format={"text"}
+      placeholder={"Address of the ERC-20 token"}
+    />
+  );
+}
+

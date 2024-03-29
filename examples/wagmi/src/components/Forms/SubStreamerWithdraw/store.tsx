@@ -11,6 +11,7 @@ const initial: Omit<ISubStreamerWithdraw> = {
   lockupLinear: undefined,
   streamId: undefined,
   to: undefined,
+  token: undefined,
 };
 
 const prefill: Omit<ISubStreamerWithdraw> = {
@@ -18,9 +19,10 @@ const prefill: Omit<ISubStreamerWithdraw> = {
   logs: [],
 
   amount: 100,
-  lockupLinear: undefined,
-  streamId: undefined,
+  lockupLinear: "0x7a43F8a888fa15e68C103E18b0439Eb1e98E4301",
+  streamId: 950,
   to: "0xAb3B85eA4f70085216FD093271fF73D77F98DAE4",
+  token: "0x776b6fC2eD15D6Bb5Fc32e0c89DE68683118c62A",
 };
 
 const useStoreForm = createWithEqualityFn<ISubstreamerCreateWithDuration>(

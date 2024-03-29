@@ -4,6 +4,7 @@ import {
   LockupLinearContract,
   Receiver,
   StreamId,
+  Token,
 } from "./fields";
 import { useCallback } from "react";
 import LoadingOverlay from "react-loading-overlay";
@@ -107,6 +108,7 @@ function SubStreamerWithdraw() {
         <LockupLinearContract />
         <StreamId />
         <Receiver />
+        <Token />
         <Amount />
         <Divider />
         <Actions>
